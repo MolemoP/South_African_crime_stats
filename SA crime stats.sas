@@ -181,3 +181,56 @@ run;
 run;
 %MEND crimes;
 %crimes(Province=Western Cape ,Station=CapeCape Town Central,Category=All theft not mentioned elsewhere,_2005-_2006=6692);
+
+/*SEARCH function*/
+%macro search(filter,x);
+  %put x= &x;
+   %put filter= &filter;
+  
+  %if &filter = id %then;
+     %do;  
+    data CRIMES;
+      set POLICE;
+      search_count = serach_count + 1;
+      run;
+     data result;
+      set POLICE;
+      where id= 1;
+      run;
+  %end;
+       
+       
+ proc print data=result ;
+ run;
+ %mend search;
+ %search(id,1);
+ 
+ proc print data=POLICE  (obs=10);
+ var Province Station Category;
+ run;
+
+ %macro search(filter,x);
+  %put x= &x;
+   %put filter= &filter;
+  
+  %if &filter = id %then;
+     %do;  
+    data CRIMES;
+      set POLICE;
+      search_count = serach_count + 1;
+      run;
+     data result;
+      set POLICE;
+      where id= 1;
+      run;
+  %end;
+       
+  /*DELETE Function*/     
+ proc print data=result ;
+ run;
+ %mend search;
+ %search(id,1);
+ 
+ proc print data=POLICE  (obs=10);
+ var Province Station Category;
+ run;
