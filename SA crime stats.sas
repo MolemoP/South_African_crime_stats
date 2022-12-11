@@ -234,3 +234,8 @@ run;
  proc print data=POLICE  (obs=10);
  var Province Station Category;
  run;
+
+
+
+
+ 
