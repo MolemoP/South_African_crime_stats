@@ -208,7 +208,7 @@ run;
  proc print data=POLICE  (obs=10);
  var Province Station Category;
  run;
-
+/*Search Function*/
  %macro search(filter,x);
   %put x= &x;
    %put filter= &filter;
