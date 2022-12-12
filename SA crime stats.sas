@@ -249,6 +249,38 @@ run;
 %mend modify;
 %modify(6);
 
+/*INSERT */
+%macro insert (id=,Province=,Station=,Category=,Year_2005=,Year_2006=,Year_2007=,Year_2008=,Year_2009=,Year_2010=,Year_2011=,Year_2012=,Year_2013=,Year_2014=,Year_2015=);
+ 
+
+     
+     data crimes;
+     id=&id;
+     Province=&Province;
+     Station=&Station;
+     Year_2005=&Year_2005;
+     Year_2006=&Year_2006;
+     Year_2007=&Year_2007;
+     Year_2008=&Year_2008;
+     Year_2009=&Year_2009;
+     Year_2010=&Year_2010;
+     Year_2011=&Year_2011;
+     Year_2012=&Year_2012;
+     Year_2013=&Year_2013;
+     Year_2014=&Year_2014;
+     Year_2015=&Year_2015;
+     
+     run;
+    
+     %mend insert;
+     
+     %insert(id=30862,Province='Limpopo',Station='JHB',Category='Bank robbery',Year_2005=4356,Year_2006=7390,Year_2007=6793,Year_2008=7397,Year_2009=6739,Year_2010=7456,Year_2011=8456,Year_2012=6382,Year_2013=4378,Year_2014=4739,Year_2015=9846);
+     
+     data crime_stats;
+     set POLICE crime_stats;
+     run;
+     quit;
+
 
 
 
