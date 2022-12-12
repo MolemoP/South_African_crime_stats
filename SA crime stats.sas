@@ -182,7 +182,7 @@ run;
 %MEND crimes;
 %crimes(Province=Western Cape ,Station=CapeCape Town Central,Category=All theft not mentioned elsewhere,_2005-_2006=6692);
 
-/*SEARCH function*/
+/* SEARCH function */
 %macro search(filter,x);
   %put x= &x;
    %put filter= &filter;
@@ -208,7 +208,8 @@ run;
  proc print data=POLICE  (obs=10);
  var Province Station Category;
  run;
-/*Search Function*/
+
+/* Search Function */
  %macro search(filter,x);
   %put x= &x;
    %put filter= &filter;
@@ -225,7 +226,7 @@ run;
       run;
   %end;
        
-  /*DELETE Function*/     
+  /* DELETE Function */     
  proc print data=result ;
  run;
  %mend search;
@@ -234,6 +235,20 @@ run;
  proc print data=POLICE  (obs=10);
  var Province Station Category;
  run;
+
+/* MODIFY FUNCTION */
+%macro modify(id,province, station);
+	data WORK.POLICE;
+	set  WORK.POLICE;
+	modify police;
+	Province = "Mpumi";
+	Station = "Phiri";
+	where id = &id;
+	proc print data=work.police(obs=10);
+run;
+%mend modify;
+%modify(6);
+
 
 
 
